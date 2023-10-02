@@ -35,9 +35,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
         try:
             first_name = validated_data['first_name']
-            last_name = validated_data['last_name']
         except KeyError:
             first_name = None
+        try:
+            last_name = validated_data['last_name']
+        except KeyError:
             last_name = None
 
         user = User.objects.create(

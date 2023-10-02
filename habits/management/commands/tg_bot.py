@@ -49,4 +49,3 @@ class Command(BaseCommand):
                 )
 
         bot.infinity_polling()
-

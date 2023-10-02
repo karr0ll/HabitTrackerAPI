@@ -6,5 +6,4 @@ from users.serializers import UserRegisterSerializer
 
 class UserRegisterView(generics.CreateAPIView):
     """Generic контроллер для регистрации пользователя"""
-    queryset = User.objects.all()
     serializer_class = UserRegisterSerializer
