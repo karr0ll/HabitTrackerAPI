@@ -4,7 +4,7 @@ from config.validators import (
     RelatedHabitAndRewardValidator,
     CompletionTimeValidator,
     NiceHabitValidator,
-    HabitPeriodicityValidator
+    HabitPeriodicityValidator, RewardAndRelatedHabitValidator
 )
 from habits.models import Habit
 
@@ -40,6 +40,13 @@ class HabitSerializer(serializers.ModelSerializer):
                 field='completion_time_in_minutes'
             ),
             NiceHabitValidator(
+                fields=[
+                    'nice_habit',
+                    'habit_related_to',
+                    'reward'
+                ]
+            ),
+            RewardAndRelatedHabitValidator(
                 fields=[
                     'nice_habit',
                     'habit_related_to',

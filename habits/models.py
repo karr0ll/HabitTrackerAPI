@@ -40,8 +40,9 @@ class Habit(models.Model):
 
     def __str__(self):
         return (
-            f'{self.place}'
-            f'{self.time}'
+            f'{self.pk}, '
+            f'{self.place}, '
+            f'{self.time}, '
             f'{self.action}'
         )
 
