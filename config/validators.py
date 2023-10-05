@@ -68,14 +68,14 @@ class RewardAndRelatedHabitValidator(NiceHabitValidator):
 
     def __call__(self, request_data):
         request_data_dict: dict = dict(request_data)
-        if request_data_dict[self.nice_habit] is True:
-            try:
+        try:
+            if request_data_dict[self.nice_habit] is True:
                 if request_data_dict[self.reward] is not None or request_data_dict[self.habit_related_to] is not None:
                     raise ValidationError(
                         'У приятной привычки не может быть вознаграждения или связанной привычки.'
                     )
-            except KeyError:
-                pass
+        except KeyError:
+            pass
 
 
 class HabitPeriodicityValidator:

@@ -37,7 +37,8 @@ class TestHabitCRUD(APITestCase):
             'nice_habit': self.habit_data.nice_habit,
             'periodicity_in_days': self.habit_data.periodicity_in_days,
             'reward': self.habit_data.reward,
-            'completion_time_in_minutes': self.habit_data.completion_time_in_minutes,
+            'completion_time_in_minutes':
+                self.habit_data.completion_time_in_minutes,
             'is_public': self.habit_data.is_public
         }
         response = self.client.post(
@@ -87,4 +88,3 @@ class TestHabitCRUD(APITestCase):
             reverse('habit:habit_delete', kwargs={'pk': self.habit_data.pk})
         )
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
