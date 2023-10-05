@@ -1,5 +1,3 @@
-# celery python3 -m celery -A config  worker -l info
-# celery beat python -m celery -A config beat -l info
 from datetime import datetime
 
 import telebot
