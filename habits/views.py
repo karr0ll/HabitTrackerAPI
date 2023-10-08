@@ -7,11 +7,15 @@ from rest_framework.generics import (
 from rest_framework.permissions import IsAuthenticated
 
 from config.pagination import ListPagination
+from config.permissions import HabitUserPermissions
 from habits.models import Habit
 from habits.serializers import HabitSerializer
 
 
 class PublicHabitListView(ListAPIView):
+    """
+    Контроллер отображения списка всех публичных привычек
+    """
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = ListPagination
@@ -21,6 +25,9 @@ class PublicHabitListView(ListAPIView):
 
 
 class UserHabitListView(ListAPIView):
+    """
+    Контроллер отображения списка всех привычек пользователя
+    """
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = ListPagination
@@ -30,28 +37,28 @@ class UserHabitListView(ListAPIView):
 
 
 class HabitCreateView(CreateAPIView):
-    """Контроллер саздания урока"""
+    """Контроллер саздания привычки"""
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        """Метод создания урока и его привязки к создавшему пользователю"""
+        """Метод создания привычки и ее привязки к создавшему пользователю"""
         user = self.request.user
         serializer.save(user=user)
 
 
 class HabitUpdateView(UpdateAPIView):
-    """Контроллер обновления урока"""
+    """Контроллер обновления привычки"""
     serializer_class = HabitSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, HabitUserPermissions]
 
     def get_queryset(self):
         return Habit.objects.filter(user=self.request.user)
 
 
 class HabitDeleteView(DestroyAPIView):
-    """Контроллер обновления урока"""
-    permission_classes = [IsAuthenticated]
+    """Контроллер удаления привычки"""
+    permission_classes = [IsAuthenticated, HabitUserPermissions]
 
     def get_queryset(self):
         return Habit.objects.filter(user=self.request.user)

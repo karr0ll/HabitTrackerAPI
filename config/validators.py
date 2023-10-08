@@ -1,7 +1,5 @@
 from rest_framework.serializers import ValidationError
 
-from habits.models import Habit
-
 
 class RelatedHabitAndRewardValidator:
     """
@@ -35,12 +33,15 @@ class CompletionTimeValidator:
     def __call__(self, request_data):
         completion_time: str = dict(request_data).get(self.field)
         if int(completion_time) > 2:
-            raise ValidationError("Время выполнения не может быть больше 2х минут")
+            raise ValidationError(
+                "Время выполнения не может быть больше 2х минут"
+            )
 
 
 class NiceHabitValidator:
     """
-    Проверяет попадние в связанные привычки только привычек с признаком приятной привычки.
+    Проверяет попадние в связанные привычки
+    только привычек с признаком приятной привычки.
     """
     def __init__(self, fields):
         self.nice_habit = fields[0]
@@ -54,14 +55,17 @@ class NiceHabitValidator:
 
             if related_habit.nice_habit is False:
                 raise ValidationError(
-                        'В связанные привычки могут попадать только привычки с признаком приятной привычки.')
+                        'В связанные привычки могут попадать '
+                        'только привычки с признаком приятной привычки.'
+                )
         except KeyError:
             pass
 
 
 class RewardAndRelatedHabitValidator(NiceHabitValidator):
     """
-    Проверяет наличие вознаграждения или связанной привычки у приятной привычки.
+    Проверяет наличие вознаграждения или
+    связанной привычки у приятной привычки.
     """
     def __init__(self, fields):
         super().__init__(fields)
@@ -70,9 +74,15 @@ class RewardAndRelatedHabitValidator(NiceHabitValidator):
         request_data_dict: dict = dict(request_data)
         try:
             if request_data_dict[self.nice_habit] is True:
-                if request_data_dict[self.reward] is not None or request_data_dict[self.habit_related_to] is not None:
+                if (
+                        request_data_dict[self.reward] is not None
+                        or request_data_dict[
+                            self.habit_related_to
+                        ] is not None
+                ):
                     raise ValidationError(
-                        'У приятной привычки не может быть вознаграждения или связанной привычки.'
+                        'У приятной привычки не может быть '
+                        'вознаграждения или связанной привычки.'
                     )
         except KeyError:
             pass
@@ -84,9 +94,11 @@ class HabitPeriodicityValidator:
     """
 
     def __init__(self, field):
-            self.field = field
+        self.field = field
 
     def __call__(self, request_data):
         periodicity_in_days: str = dict(request_data).get(self.field)
         if int(periodicity_in_days) > 7:
-            raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней")
+            raise ValidationError(
+                "Нельзя выполнять привычку реже, чем 1 раз в 7 дней"
+            )
