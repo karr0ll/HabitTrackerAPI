@@ -21,10 +21,9 @@ class Command(BaseCommand):
             )
 
         @bot.message_handler(
-            regexp='([A-Za-z0-9]+[.-_])*'
-                   '[A-Za-z0-9]+'
-                   '@[A-Za-z0-9-]+'
-                   '(\.[A-Z|a-z]{2,})+',
+            regexp='([A-Za-z0-9]+[.-_])*[A-Za-z0-9]'
+                   '+@[A-Za-z0-9-]+'
+                   '.[A-Z|a-z]{2,})+',
             content_types=['text']
         )
         def get_user_chat_id(message):

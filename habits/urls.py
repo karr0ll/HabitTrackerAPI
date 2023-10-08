@@ -12,9 +12,9 @@ from habits.views import (
 app_name = HabitsConfig.name
 
 urlpatterns = [
-    path('public/list/', PublicHabitListView.as_view(), name='habit_list'),
-    path('list/', UserHabitListView.as_view(), name='habit_list'),
-    path('create/', HabitCreateView.as_view(), name='habit_create'),
-    path('update/<int:pk>/', HabitUpdateView.as_view(), name='habit_update'),
-    path('delete/<int:pk>/', HabitDeleteView.as_view(), name='habit_delete'),
+    path('public/list/', PublicHabitListView.as_view(), name='list_public'),
+    path('list/', UserHabitListView.as_view(), name='list'),
+    path('create/', HabitCreateView.as_view(), name='create'),
+    path('update/<int:pk>/', HabitUpdateView.as_view(), name='update'),
+    path('delete/<int:pk>/', HabitDeleteView.as_view(), name='delete'),
 ]

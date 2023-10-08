@@ -42,7 +42,7 @@ class TestHabitCRUD(APITestCase):
             'is_public': self.habit_data.is_public
         }
         response = self.client.post(
-            path=reverse('habits:habit_create'),
+            path=reverse('habits:create'),
             data=habit_data,
         )
         self.assertEqual(
@@ -65,14 +65,14 @@ class TestHabitCRUD(APITestCase):
 
     def test_habit_list(self):
         response = self.client.get(
-            reverse('habit:habit_list')
+            reverse('habit:list')
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.json().get('results')), 1)
 
     def test_habit_update(self):
         response = self.client.patch(
-            reverse('habit:habit_update', kwargs={'pk': self.habit_data.pk}),
+            reverse('habit:update', kwargs={'pk': self.habit_data.pk}),
             data={
                 'place': 'new_test_place',
                 'completion_time_in_minutes': 1,
@@ -85,6 +85,6 @@ class TestHabitCRUD(APITestCase):
 
     def test_lesson_destroy(self):
         response = self.client.delete(
-            reverse('habit:habit_delete', kwargs={'pk': self.habit_data.pk})
+            reverse('habit:delete', kwargs={'pk': self.habit_data.pk})
         )
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
