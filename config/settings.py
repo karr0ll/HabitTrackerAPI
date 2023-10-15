@@ -107,7 +107,7 @@ DATABASES = {
         'NAME': 'habit_tracker_drf_db',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'PORT': 5432
     }
 }
@@ -175,8 +175,8 @@ SIMPLE_JWT = {
 
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY')
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_TIMEZONE = 'Europe/Moscow'
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
