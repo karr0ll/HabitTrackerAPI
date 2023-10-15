@@ -43,3 +43,15 @@
 > celery beat python -m celery -A config beat -l info
 
 
+
+### Создание Docker-образа приложения: 
+1. Скачайте Docker по инструкции из документации:
+https://docs.docker.com/desktop/
+
+2. Клонируйте Dockerfile
+3. В терминале выполните команду 
+>docker build -t habit_tracker_app .
+
+
+
+
