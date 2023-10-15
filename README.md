@@ -62,13 +62,14 @@ https://docs.docker.com/desktop/
 2.Запуск контейнеров
 >docker-compose up
 
-3. Создание БД
+3.Создание БД
 >docker-compose exec db psql -U postgres  
 > 
 >create database habit_tracker_drf_db;  
 > 
 > \q
-4. Применение миграций
+
+4.Применение миграций
 >docker-compose exec app python manage.py migrate
 
 
