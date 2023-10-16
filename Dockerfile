@@ -1,7 +1,7 @@
 FROM python:3.11 AS builder
 
 # для корректного вывода логов
-ENV PYTHONDONTWRITEBYCODE 1
+ENV PYTHONUNBUFFERED 1
 
 # для удаления из образа runtime кэша
 ENV PYTHONDONTWRITEBYTECODE 1
