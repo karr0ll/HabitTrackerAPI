@@ -56,20 +56,13 @@ https://docs.docker.com/desktop/
 
 Выполните команды в терминале:
 
-1.Сборка образа
+1. Сборка образа
 >docker-compose build
 
-2.Запуск контейнеров
+2. Запуск контейнеров
 >docker-compose up
 
-3.Создание БД
->docker-compose exec db psql -U postgres  
-> 
->create database habit_tracker_drf_db;  
-> 
-> \q
-
-4.Применение миграций
+3. Применение миграций
 >docker-compose exec app python manage.py migrate
 
 
