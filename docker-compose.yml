@@ -1,0 +1,80 @@
+version: '3'
+
+services:
+
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  db:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - pgdata:/var/lib/postgresql/data/pgdata
+    ports:
+      - '5432:5432'
+
+  app:
+    build:
+      context: .
+    tty: true
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - '8000:8000'
+    command: python3 manage.py runserver 0.0.0.0:8000
+
+  celery:
+    build: .
+    tty: true
+    env_file:
+      - .env
+    command: celery -A config  worker -l info
+    depends_on:
+      - redis
+      - app
+
+  celery-beat:
+    build: .
+    restart: always
+    tty: true
+    env_file:
+      - .env
+    command: celery -A config beat -l info
+    depends_on:
+      - redis
+      - app
+
+  tg-bot:
+    build: .
+    restart: always
+    tty: true
+    env_file:
+      - .env
+    command: python manage.py tg_bot
+    depends_on:
+      - redis
+      - app
+
+volumes:
+  app:
+  pgdata:
