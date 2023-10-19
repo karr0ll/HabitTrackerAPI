@@ -272,3 +272,4 @@ vine==5.0.0 ; python_version >= "3.11" and python_version < "4.0" \
 wcwidth==0.2.8 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:77f719e01648ed600dfa5402c347481c0992263b81a027344f3e1ba25493a704 \
     --hash=sha256:8705c569999ffbb4f6a87c6d1b80f324bd6db952f5eb0b95bc07517f4c1813d4
+gunicorn==21.2.0 ; python_version >= "3.11" and python_version < "4.0"
