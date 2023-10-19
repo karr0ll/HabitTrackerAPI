@@ -26,11 +26,11 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = os.environ.get("DJANGO_APP_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
+DEPLOY_METHOD = os.environ.get("DEPLOY_METHOD")
 
 ALLOWED_HOSTS = [
-    '0.0.0.0:8000',
-    'localhost'
+    '158.160.127.201'
 ]
 
 
@@ -68,7 +68,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',
+    '158.160.127.201',
 ]
 
 CORS_ALLOW_METHODS = (
@@ -104,16 +104,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'habit_tracker_drf_db',
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': 'db',
-        'PORT': 5432
+if DEPLOY_METHOD == 'manual':
+    DB_HOST = os.environ.get('DB_HOST_MANUAL')
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'habit_tracker_drf_db',
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASS'),
+            'HOST': DB_HOST,
+            'PORT': 5432
+        }
     }
-}
 
 
 # Password validation
