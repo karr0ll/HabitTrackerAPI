@@ -68,7 +68,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    '158.160.127.201',
+    'https://158.160.127.201',
 ]
 
 CORS_ALLOW_METHODS = (
