@@ -109,16 +109,16 @@ if DEPLOY_METHOD == 'manual':
 else:
     DB_HOST = 'db'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'habit_tracker_drf_db',
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': DB_HOST,
-        'PORT': os.environ.get('DB_PORT_MANUAL')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'habit_tracker_drf_db',
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASS'),
+            'HOST': DB_HOST,
+            'PORT': os.environ.get('DB_PORT_MANUAL')
+        }
     }
-}
 
 
 # Password validation
