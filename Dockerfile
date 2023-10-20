@@ -9,14 +9,9 @@ ARG APP_HOME=/app
 
 WORKDIR ${APP_HOME}
 
-RUN pip install poetry==1.6.1
+COPY ./requirements.txt ${APP_HOME}/
 
-COPY ./poetry.lock ./pyproject.toml ${APP_HOME}/
-
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-root
-
-EXPOSE 8000
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . ${APP_HOME}/
 
