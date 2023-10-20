@@ -62,9 +62,6 @@ https://docs.docker.com/desktop/
 2. Запуск контейнеров
 >docker-compose up
 
-3. Применение миграций
->docker-compose exec app python manage.py migrate
-
 
 
 
