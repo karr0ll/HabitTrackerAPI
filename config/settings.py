@@ -198,11 +198,8 @@ CELERY_BEAT_SCHEDULE = {
 
 TG_TOKEN = os.environ.get("TG_TOKEN")
 
-STATIC_URL = 'static/'
 
 if DEPLOY_METHOD == 'manual':
     STATIC_ROOT = BASE_DIR / 'static'
 else:
-    STATICFILES_DIRS = (
-        BASE_DIR / 'static'
-    )
+    STATIC_URL = 'static/'
