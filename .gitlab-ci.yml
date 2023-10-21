@@ -5,12 +5,14 @@ stages:
 tests:
   stage: test
   script:
+    - cp $ENV .env
     - bash test.sh
   tags:
     - habit-app
 
 deploy:
   stage: deploy
+  needs: ["tests"]
   script:
     - cp $ENV .env
     - bash deploy.sh
