@@ -5,7 +5,7 @@ stages:
 tests:
   stage: test
   script:
-    - cp $EN .env
+    - cp $ENV .env
     - bash test.sh
   tags:
     - habit-app
