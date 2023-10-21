@@ -14,7 +14,7 @@ services:
 
   db:
     image: postgres:latest
-    restart: always
+    restart: on-failure
     env_file:
       - .env
     healthcheck:
