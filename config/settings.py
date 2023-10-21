@@ -112,16 +112,16 @@ else:
     DB_HOST = os.environ.get('DB_HOST_DOCKER')
     DB_PORT = os.environ.get('DB_PORT_DOCKER')
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'habit_tracker_drf_db',
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASS'),
-            'HOST': DB_HOST,
-            'PORT': DB_PORT
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'habit_tracker_drf_db',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
+        'HOST': DB_HOST,
+        'PORT': DB_PORT
     }
+}
 
 
 
