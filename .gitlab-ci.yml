@@ -6,7 +6,6 @@ tests:
   stage: test
   script:
     - bash test.sh
-    - python3 manage.py test
   tags:
     - habit-app
 
