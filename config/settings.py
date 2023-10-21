@@ -202,4 +202,4 @@ TG_TOKEN = os.environ.get("TG_TOKEN")
 if DEPLOY_METHOD == 'manual':
     STATIC_ROOT = BASE_DIR / 'static'
 else:
-    STATIC_URL = 'static/'
+    STATIC_URL = 'staticfiles/'
