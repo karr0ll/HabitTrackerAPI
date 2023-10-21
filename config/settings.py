@@ -30,7 +30,8 @@ DEBUG = os.environ.get("DEBUG")
 DEPLOY_METHOD = os.environ.get("DEPLOY_METHOD")
 
 ALLOWED_HOSTS = [
-    '158.160.127.201'
+    '158.160.127.201',
+    '127.0.0.1'
 ]
 
 
@@ -205,7 +206,7 @@ TG_TOKEN = os.environ.get("TG_TOKEN")
 # if DEPLOY_METHOD == 'manual':
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static/'
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'staticfiles'),
-]
+# STATICFILES_DIR = [
+#     os.path.join(BASE_DIR, 'staticfiles'),
+# ]
 
