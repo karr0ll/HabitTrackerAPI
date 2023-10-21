@@ -115,7 +115,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'habit_tracker_drf_db',
+            'NAME': os.environ.get('POSTGRES_DB'),
             'USER': os.environ.get('DB_USER'),
             'PASSWORD': os.environ.get('DB_PASS'),
             'HOST': DB_HOST,
