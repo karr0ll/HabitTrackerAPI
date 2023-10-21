@@ -10,9 +10,8 @@ tests:
 deploy:
   stage: deploy
   script:
-    - cp $ENV_DEV .env
+    - cp $ENV .env
     - bash deploy.sh
-  #environment: production
   only:
     - main
   tags:
