@@ -107,8 +107,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 if DEPLOY_METHOD == 'manual':
     DB_HOST = os.environ.get('DB_HOST_MANUAL')
+    DB_PORT = os.environ.get('DB_PORT_MANUAL')
 else:
     DB_HOST = 'db'
+    DB_PORT = os.environ.get('DB_PORT_DOCKER')
 
     DATABASES = {
         'default': {
@@ -117,7 +119,7 @@ else:
             'USER': os.environ.get('DB_USER'),
             'PASSWORD': os.environ.get('DB_PASS'),
             'HOST': DB_HOST,
-            'PORT': os.environ.get('DB_PORT_MANUAL')
+            'PORT': DB_PORT
         }
     }
 
