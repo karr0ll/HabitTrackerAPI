@@ -22,7 +22,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    command: psql -U ${POSTGRES_USER} && create database ${POSTGRES_DB}
+    command: psql -U ${POSTGRES_USER} && bash -c "create database ${POSTGRES_DB};"
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
     ports:
