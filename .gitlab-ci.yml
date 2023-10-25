@@ -9,6 +9,10 @@ tests:
     - bash test.sh
   tags:
     - habit-app
+  rules:
+    - changes:
+        - "*.md"
+      when: never
 
 deploy:
   stage: deploy
@@ -20,3 +24,7 @@ deploy:
     - main
   tags:
     - habit-app
+  rules:
+    - changes:
+        - "*.md"
+      when: never
