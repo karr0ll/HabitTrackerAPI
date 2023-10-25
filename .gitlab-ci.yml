@@ -13,6 +13,7 @@ tests:
     - changes:
         - "*.md"
       when: never
+    - when: always
 
 deploy:
   stage: deploy
@@ -28,3 +29,5 @@ deploy:
     - changes:
         - "*.md"
       when: never
+    - when: always
+
