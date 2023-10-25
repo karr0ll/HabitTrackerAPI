@@ -9,13 +9,18 @@ tests:
     - bash test.sh
   tags:
     - habit-app
-  rules:
-    - changes:
+  except:
+    refs:
+      - files
+    changes:
         - "*.md"
-      when: never
-    - when: always
 
 deploy:
+  except:
+    refs:
+      - files
+    changes:
+      - "*.md"
   stage: deploy
   needs: ["tests"]
   script:
@@ -25,9 +30,5 @@ deploy:
     - main
   tags:
     - habit-app
-  rules:
-    - changes:
-        - "*.md"
-      when: never
-    - when: always
+
 
