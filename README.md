@@ -57,7 +57,7 @@ https://docs.docker.com/desktop/
 Выполните команды в терминале:
 
 1. Запуск контейнеров
->docker-compose -d up --build
+>docker-compose up -d --build
 
 
 
