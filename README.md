@@ -16,7 +16,7 @@
 Библиотеки, используемые в проекте:
 >python 3.11  
 >django 4.2.5  
->djangorestframework 3.14.0
+>djangorestframework 3.14.0  
 >psycopg2 2.9.7  
 >python-dotenv 1.0.0  
 >django-filter 23.3  
